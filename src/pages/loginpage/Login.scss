@@ -1,0 +1,19 @@
+.Loginpage {
+    *{
+        // border:1px solid red
+    }
+    .login-input-section {
+        position:relative;
+
+        .form-lable-text{
+           position: absolute;
+           z-index: 9;
+    margin: 0px;
+    transform: translate(50%, 22%);
+        }
+    .form-control:focus+.form-lable-text {
+            transform: translate(50%, -60%);
+        }
+    }
+   
+}
