@@ -5,6 +5,8 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Pagecalling from './pagecalling/Pagecalling';
+import Condition from "./javascript/Condition"
+
 
 
 
@@ -12,6 +14,8 @@ import Pagecalling from './pagecalling/Pagecalling';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    {/* <Condition/> */}
+
    <Pagecalling/>
   </React.StrictMode>
 );
