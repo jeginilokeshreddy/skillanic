@@ -1,0 +1,12 @@
+.sidebar-container{
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: beige;
+
+}

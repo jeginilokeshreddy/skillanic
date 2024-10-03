@@ -13,54 +13,70 @@ export default function Sidebar() {
         {
             name: "Dashboard",
             iconName: "menu",
+            linkdata:"/sidebar"
         },
         {
-            name: "order",
+            name: "Forgot",
             iconName: "home",
             type: "solid",
-        },
+            linkdata: "forgot"   //when we use nested route to display componet we will not use / for the to attribute
+                                  //when we did not use slash the text will appen to the url place
+        }, 
         {
-            name: "Explore",
+            name: "Hostelmanagement",
             iconName: "compass",
-            type: "solid",
+            linkdata: "/login"
         },
         {
-            name: "Messages",
+            name: "Login",
             iconName: "envelope",
-            type: "solid",
+            linkdata: "/"
         },
         {
-            name: "Resources",
+            name: "Menumanagement",
             iconName: "spreadsheet",
             type: "solid",
+            linkdata: "/login"
         },
         {
-            name: "Starred",
+            name: "Notification",
             iconName: "star",
             type: "solid",
+            linkdata: "/login"
         },
         {
-            name: "Settings",
+            name: "Order",
             iconName: "cog",
             type: "solid",
+            linkdata: "/login"
         },
         {
-            name: "Log Out",
+            name: "Signup",
             iconName: "log-out",
             color: "red",
             rotate: "180",
+            linkdata: "/login"
         },
+        {
+            name: "Support",
+            iconName: "log-out",
+            color: "red",
+            rotate: "180",
+            linkdata: "/login"
+        },
+     
     ];
   return (
-      <div className={`sidebar sidebar-container ${expanded && "expanded"}`}> 
-    
+      <div className={`sidebar-container sidebar  ${expanded && "expanded"}`}> 
+           <section>
           {menuItems.map((item)=>{
               return (<>
-                  <NavLink to={`${item.name}`} key={item.name}>
+                  <NavLink to={`${item.linkdata}`} key={item.name}>
                       {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
                   </NavLink>
               </>)
           })}
+          </section>
        
           <Outlet/>
     </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 // external packages
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -6,6 +7,15 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "./Login.scss";
 
 export default function Loginpage() {
+  const navigate = useNavigate(); 
+
+  const logintopage = (e) => {
+    e.preventDefault();  // Prevent the default form submission behavior
+    // Perform login logic (like checking credentials)
+
+    // After successful login, navigate to the sidebar page
+    navigate('/sidebar');
+  };
   return (
     <div className=" Loginpage          loginpage-container container d-flex justify-content-center align-items-center vh-100">
       <div
@@ -70,7 +80,9 @@ export default function Loginpage() {
 
         {/* Login Button */}
         <div className="d-grid mb-3">
-          <button className="btn btn-primary">Login</button>
+          <button className="btn btn-primary" onClick={(e)=>{
+            logintopage(e)
+          }}>Login</button>
         </div>
 
         {/* Social Media Links */}

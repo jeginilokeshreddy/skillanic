@@ -21,14 +21,12 @@ export default function Pagecalling() {
       <Forgot /> */}
       <BrowserRouter>
       <Routes>
-          <Route path="/" element={<Sidebar />}>
-            <Route path="home" element={<Home />} />
-            <Route path="about" element={<About/>} />
-            <Route path="contact" element={<Contact />} />
-          <Route path='Dashboard' element={<Dashboard/>}/>
-            <Route path='Order' element={<Order />} />
-            <Route path='forgot' element={<Forgot />} />
-          
+          {/* <Route path="sidebar" element={<Sidebar />}> */}
+          <Route path="/" element={<Loginpage />}/>
+          <Route path="sidebar" element={<Sidebar />}>
+            <Route index  element={<Dashboard/>}/>
+          <Route path='Order' element={<Order />} />
+          <Route path='forgot' element={<Forgot />} />
           </Route>
       </Routes>
       </BrowserRouter>
