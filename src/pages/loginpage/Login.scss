@@ -17,3 +17,26 @@
     }
    
 }
+.parentcontainer{
+    display:flex; //d-flex
+    flex-direction: row; //default direction is row //flex-row
+    gap:20px; //gap-2
+    background-color: yellow;
+    flex-wrap: wrap; //flex-nowrap ,flex-wrap
+    flex-flow: column wrap; //no boot stap class
+}
+
+.parentcontainer>p{
+    width:200px;
+    height:200px;
+    background-color: red;
+}
+
+.bootstapcontainer{
+     background-color: blue;
+     &>p{
+        width:200px;
+    height:200px;
+  background-color: white;
+     }
+}

@@ -1,101 +1,195 @@
-import React from "react";
-import { useNavigate } from 'react-router-dom';
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import MuiCard from '@mui/material/Card';
+import Checkbox from '@mui/material/Checkbox';
+import Divider from '@mui/material/Divider';
+import FormLabel from '@mui/material/FormLabel';
+import FormControl from '@mui/material/FormControl';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Link from '@mui/material/Link';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 
-// external packages
-import "bootstrap-icons/font/bootstrap-icons.css";
-//external css links
-import "./Login.scss";
+import { styled } from '@mui/material/styles';
+
+import ForgotPassword from './ForgotPassword';
+import { GoogleIcon, FacebookIcon, SitemarkIcon } from './CustomIcons';
+
+const Card = styled(MuiCard)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  alignSelf: 'center',
+  width: '100%',
+  padding: theme.spacing(4),
+  gap: theme.spacing(2),
+  boxShadow:
+    'hsla(220, 30%, 5%, 0.05) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.05) 0px 15px 35px -5px',
+  [theme.breakpoints.up('sm')]: {
+    width: '450px',
+  },
+  ...theme.applyStyles('dark', {
+    boxShadow:
+      'hsla(220, 30%, 5%, 0.5) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.08) 0px 15px 35px -5px',
+  }),
+}));
 
 export default function Loginpage() {
-  const navigate = useNavigate(); 
+  const [emailError, setEmailError] = React.useState(false);
+  const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
+  const [passwordError, setPasswordError] = React.useState(false);
+  const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
+  const [open, setOpen] = React.useState(false);
 
-  const logintopage = (e) => {
-    e.preventDefault();  // Prevent the default form submission behavior
-    // Perform login logic (like checking credentials)
-
-    // After successful login, navigate to the sidebar page
-    navigate('/sidebar');
+  const handleClickOpen = () => {
+    setOpen(true);
   };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get('email'),
+      password: data.get('password'),
+    });
+  };
+
+  const validateInputs = () => {
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+
+    let isValid = true;
+
+    if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {
+      setEmailError(true);
+      setEmailErrorMessage('Please enter a valid email address.');
+      isValid = false;
+    } else {
+      setEmailError(false);
+      setEmailErrorMessage('');
+    }
+
+    if (!password.value || password.value.length < 6) {
+      setPasswordError(true);
+      setPasswordErrorMessage('Password must be at least 6 characters long.');
+      isValid = false;
+    } else {
+      setPasswordError(false);
+      setPasswordErrorMessage('');
+    }
+
+    return isValid;
+  };
+
   return (
-    <div className=" Loginpage          loginpage-container container d-flex justify-content-center align-items-center vh-100">
-      <div
-        className="card p-4 shadow-lg"
-        style={{ width: "100%", maxWidth: "400px" }}
+    <Card variant="outlined">
+      <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+        <SitemarkIcon />
+      </Box>
+      <Typography
+        component="h1"
+        variant="h4"
+        sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
       >
-        {/* Avatar Icon */}
-        <div className="d-flex justify-content-center mb-4">
-          <img
-            src="avatar_icon.png"
-            alt="Avatar Icon"
-            style={{ width: "100px", height: "100px", borderRadius: "50%" }}
+        Sign in
+      </Typography>
+      <Box
+        component="form"
+        onSubmit={handleSubmit}
+        noValidate
+        sx={{ display: 'flex', flexDirection: 'column', width: '100%', gap: 2 }}
+      >
+        <FormControl>
+          <FormLabel htmlFor="email">Email</FormLabel>
+          <TextField
+            error={emailError}
+            helperText={emailErrorMessage}
+            id="email"
+            type="email"
+            name="email"
+            placeholder="your@email.com"
+            autoComplete="email"
+            autoFocus
+            required
+            fullWidth
+            variant="outlined"
+            color={emailError ? 'error' : 'primary'}
+            sx={{ ariaLabel: 'email' }}
           />
-        </div>
-
-        {/* Username Input */}
-        <div className="form-group mb-3 l        ogin-input-section">
-          <div className="input-group">
-            <span className="input-group-text">
-              <i className="bi bi-person"></i> {/* Bootstrap Icon for user */}
-            </span>
-            <input type="text" className="form-control" id="username" />
-
-            <label htmlFor="username" className="form-label form-lable-text">
-              Username or Email
-            </label>
-          </div>
-        </div>
-
-        {/* Password Input */}
-        <div className="form-group mb-3">
-          <div className="input-group">
-            <span className="input-group-text">
-              <i className="bi bi-lock"></i> {/* Bootstrap Icon for password */}
-            </span>
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              placeholder="Enter your password"
-            />
-            <label htmlFor="password" className="form-label form-lable-text">
-              Password
-            </label>
-          </div>
-        </div>
-
-        {/* Remember me and Forgot Password */}
-        <div
-          className="d-flex                      justify-content-between                     
-  
-        align-items-center mb-3"
+        </FormControl>
+        <FormControl>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            <FormLabel htmlFor="password">Password</FormLabel>
+            <Link
+              component="button"
+              onClick={handleClickOpen}
+              variant="body2"
+              sx={{ alignSelf: 'baseline' }}
+            >
+              Forgot your password?
+            </Link>
+          </Box>
+          <TextField
+            error={passwordError}
+            helperText={passwordErrorMessage}
+            name="password"
+            placeholder="••••••"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            autoFocus
+            required
+            fullWidth
+            variant="outlined"
+            color={passwordError ? 'error' : 'primary'}
+          />
+        </FormControl>
+        <FormControlLabel
+          control={<Checkbox value="remember" color="primary" />}
+          label="Remember me"
+        />
+        <ForgotPassword open={open} handleClose={handleClose} />
+        <Button type="submit" fullWidth variant="contained" onClick={validateInputs}>
+          Sign in
+        </Button>
+        <Typography sx={{ textAlign: 'center' }}>
+          Don&apos;t have an account?{' '}
+          <span>
+            <Link
+              href="/material-ui/getting-started/templates/sign-in/"
+              variant="body2"
+              sx={{ alignSelf: 'center' }}
+            >
+              Sign up
+            </Link>
+          </span>
+        </Typography>
+      </Box>
+      <Divider>or</Divider>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+        <Button
+          type="submit"
+          fullWidth
+          variant="outlined"
+          onClick={() => alert('Sign in with Google')}
+          startIcon={<GoogleIcon />}
         >
-          <div>
-            <input type="checkbox" id="rememberMe" />
-            <label htmlFor="rememberMe" className="ms-2 ">
-              Remember Me
-            </label>
-          </div>
-          <a href="#">Forgot P assword?</a>
-        </div>
-
-        {/* Login Button */}
-        <div className="d-grid mb-3">
-          <button className="btn btn-primary" onClick={(e)=>{
-            logintopage(e)
-          }}>Login</button>
-        </div>
-
-        {/* Social Media Links */}
-        <div className="text-center">
-          <p>Login with social media</p>
-          <div className="d-flex justify-content-center gap-3">
-            <i className="bi bi-google"></i>
-            <i className="bi bi-whatsapp"></i>
-            <i className="bi bi-facebook"></i>
-            <i className="bi bi-twitter"></i>
-          </div>
-        </div>
-      </div>
-    </div>
+          Sign in with Google
+        </Button>
+        <Button
+          type="submit"
+          fullWidth
+          variant="outlined"
+          onClick={() => alert('Sign in with Facebook')}
+          startIcon={<FacebookIcon />}
+        >
+          Sign in with Facebook
+        </Button>
+      </Box>
+    </Card>
   );
 }

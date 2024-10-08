@@ -1,5 +1,8 @@
+
+
+
 import React, { useState, useEffect } from 'react'
-import { Outlet ,NavLink} from 'react-router-dom';
+import { Outlet, NavLink } from 'react-router-dom';
 import "./Sidebar.scss"
 
 export default function Sidebar() {
@@ -7,21 +10,21 @@ export default function Sidebar() {
     const [active, setActive] = useState(1);
     const [animate, setAnimate] = useState(false);
     const [expanded, setExpanded] = useState(false);
-    
+
 
     let menuItems = [
         {
             name: "Dashboard",
             iconName: "menu",
-            linkdata:"/sidebar"
+            linkdata: "sidebar"
         },
         {
             name: "Forgot",
             iconName: "home",
             type: "solid",
             linkdata: "forgot"   //when we use nested route to display componet we will not use / for the to attribute
-                                  //when we did not use slash the text will appen to the url place
-        }, 
+            //when we did not use slash the text will appen to the url place
+        },
         {
             name: "Hostelmanagement",
             iconName: "compass",
@@ -64,23 +67,23 @@ export default function Sidebar() {
             rotate: "180",
             linkdata: "/login"
         },
-     
+
     ];
-  return (
-      <div className={`sidebar-container sidebar  ${expanded && "expanded"}`}> 
-           <section>
-          {menuItems.map((item)=>{
-              return (<>
-                  <NavLink to={`${item.linkdata}`} key={item.name}>
-                      {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
-                  </NavLink>
-              </>)
-          })}
-          </section>
-       
-          <Outlet/>
-    </div>
-  )
+    return (
+        <div className={`sidebar-container sidebar  ${expanded && "expanded"}`}>
+            <section>
+                {menuItems.map((item) => {
+                    return (<>
+                        <NavLink to={`${item.linkdata}`} key={item.name}>
+                            {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
+                        </NavLink>
+                    </>)
+                })}
+            </section>
+
+            <Outlet />
+        </div>
+    )
 }
 
 

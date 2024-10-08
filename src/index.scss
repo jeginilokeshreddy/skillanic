@@ -1,0 +1,278 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+//from single plcae we are cotrolling values (cange in one place reflect in multible places)
+
+
+//desing system for the repeated elmets on the differtn  page repeate elment and structure
+//for elment and structure we will pass values
+
+// anchor tag
+
+$anchortag-fontSize:18px;
+
+//ptag font size
+$anchortag-fontSize:16px;
+
+
+
+//section alignment and gap  and direction will deal
+
+//body bg color
+$body-bgcolor:#d1fae5;
+//row bg color
+$row-bgcolor:#fcd34d ;
+//button bg color
+$button-bgcolor:#fcd34d;
+//column bg color
+$column-bgcolor:#fff;
+$reading_text:#e2e2e2;
+
+body{
+  background-color:$body-bgcolor ;
+}
+*{
+  padding: 0px;
+  margin: 0px;
+//  font-family: "Roboto", sans-serif;
+ font-family: "Edu AU VIC WA NT Dots";
+ 
+  
+}
+a{
+text-decoration: none;
+font-weight: bold;
+font-size: $anchortag-fontSize;
+border: 0px solid $column-bgcolor;
+transition:  border 2s ease;
+}
+a:hover{
+  border-bottom: 3px solid $column-bgcolor;
+}
+
+.button_component {
+  height: 56px;
+  width: 200px;
+  background-color:$button-bgcolor;
+  font-size:$anchortag-fontSize;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 3s ;
+  border-radius: 0px;
+//  color: $reading_text;
+color: black;
+ transition: border-radius 1s linear;
+&:hover{
+  background-color: $column-bgcolor;
+  border-radius: 20px;
+}
+}
+
+.column_direction {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 24px;
+}
+
+.reading_text{
+  color: $reading_text;
+  text-align: center;
+}
+
+//for the class compomt we will give 5 variants for the same class we are goint to ovr right
+  @media screen and (min-width: 0px) {
+  .row_direction {
+     display: flex;
+    flex-direction: column;
+    // justify-content: space-evenly;
+    // align-items: center;
+    gap: 24px;
+  }
+  .column_direction {
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-evenly;
+    // align-items: center;
+    gap: 24px;
+    padding: 0px 20px;
+}
+
+
+
+}
+
+ @media screen and (min-width: 576px) {
+  .row_direction{
+   display: flex;
+   flex-direction: row;
+  //  justify-content: space-evenly;
+  //  align-items: center;
+   gap:16px;
+}
+
+  .column_direction {
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-evenly;
+    // align-items: center;
+    gap: 24px;
+    padding: 0px 20px;
+}
+nav{
+    height: fit-content;
+}
+ }
+
+ //commin styles
+
+
+//  componet is the combination of html tags with proper structure and with proper property and values
+
+// 1)button componet what height color we nedd to use and what styles we need to use
+
+// width property
+$row_section:100%;
+$col_section100:100%;
+$col_section75:75%;
+$col_section50:50%;
+$col_section25:25%;
+$col_section33:33%;
+
+// height propery with vh unit
+
+$height_section_10vh: 10vh;
+$height_section_20vh: 20vh;
+$height_section_30vh: 30vh;
+$height_section_40vh: 40vh;
+$height_section_50vh: 50vh;
+$height_section_60vh: 60vh;
+$height_section_70vh: 70vh;
+$height_section_80vh: 80vh;
+$height_section_90vh: 90vh;
+$height_section_100vh: 100vh;
+
+//height propety with px unit
+$height_section_8: 8px;
+$height_section_16: 16px;
+$height_section_24: 24px;
+$height_section_32: 32px;
+$height_section_40: 40px;
+$height_section_48: 48px;
+$height_section_56: 56px;
+$height_section_64: 64px;
+$height_section_72: 72px;
+$height_section_80: 80px;
+$height_section_88: 88px;
+$height_section_96: 96px;
+$height_section_104: 104px;
+$height_section_112: 112px;
+$height_section_120: 120px;
+$height_section_128: 128px;
+$height_section_136: 136px;
+$height_section_144: 144px;
+$height_section_152: 152px;
+$height_section_160: 160px;
+$height_section_168: 168px;
+$height_section_176: 176px;
+$height_section_184: 184px;
+$height_section_192: 192px;
+$height_section_200: 200px;
+$height_section_208: 208px;
+$height_section_216: 216px;
+$height_section_224: 224px;
+$height_section_232: 232px;
+$height_section_240: 240px;
+$height_section_248: 248px;
+$height_section_256: 256px;
+$height_section_264: 264px;
+$height_section_272: 272px;
+$height_section_280: 280px;
+$height_section_288: 288px;
+$height_section_296: 296px;
+$height_section_304: 304px;
+$height_section_312: 312px;
+$height_section_320: 320px;
+$height_section_328: 328px;
+$height_section_336: 336px;
+$height_section_344: 344px;
+$height_section_352: 352px;
+$height_section_360: 360px;
+$height_section_368: 368px;
+$height_section_376: 376px;
+$height_section_384: 384px;
+$height_section_392: 392px;
+$height_section_400: 400px;
+$height_section_408: 408px;
+$height_section_416: 416px;
+$height_section_424: 424px;
+$height_section_432: 432px;
+$height_section_440: 440px;
+$height_section_448: 448px;
+$height_section_456: 456px;
+$height_section_464: 464px;
+$height_section_472: 472px;
+$height_section_480: 480px;
+$height_section_488: 488px;
+$height_section_496: 496px;
+$height_section_504: 504px;
+$height_section_512: 512px;
+$height_section_520: 520px;
+$height_section_528: 528px;
+$height_section_536: 536px;
+$height_section_544: 544px;
+$height_section_552: 552px;
+$height_section_560: 560px;
+$height_section_568: 568px;
+$height_section_576: 576px;
+$height_section_584: 584px;
+$height_section_592: 592px;
+$height_section_600: 600px;
+
+//bg color
+
+//border
+
+// text color
+
+//padding
+$padding_section_8: 8px;
+$padding_section_16: 16px;
+$padding_section_24: 24px;
+$padding_section_32: 32px;
+$padding_section_40: 40px;
+$padding_section_48: 48px;
+$padding_section_56: 56px;
+$padding_section_64: 64px;
+$padding_section_72: 72px;
+$padding_section_80: 80px;
+$padding_section_88: 88px;
+$padding_section_96: 96px;
+$padding_section_104: 104px;
+$padding_section_112: 112px;
+$padding_section_120: 120px;
+
+
+//margin
+$margin_section_8: 8px;
+$margin_section_16: 16px;
+$margin_section_24: 24px;
+$margin_section_32: 32px;
+$margin_section_40: 40px;
+$margin_section_48: 48px;
+$margin_section_56: 56px;
+$margin_section_64: 64px;
+$margin_section_72: 72px;
+$margin_section_80: 80px;
+$margin_section_88: 88px;
+$margin_section_96: 96px;
+$margin_section_104: 104px;
+$margin_section_112: 112px;
+$margin_section_120: 120px;
+
+
+.row{
+  margin: 0px;
+}
